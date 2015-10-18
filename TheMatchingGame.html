@@ -1,0 +1,131 @@
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+
+<body onClick="endGame()">
+<style>
+	
+	body {
+	  background-image: url("sonic.jpg");
+	}
+	
+	img {
+	  position: absolute;
+	}
+
+	div {
+	  position: absolute;
+	  width: 500px;
+	  height: 500px;
+	}
+
+	#rightSide { 
+	  left: 650px; 
+      border-left: 2px solid #FFFF00;
+    }
+
+    #title {
+      color: #FFFF00;
+      font-family:Lato;
+   	  font-size: 50px;
+   	  text-align: center;
+    }
+
+    #rule {
+      color: #FFFF00;
+      font-family:Lato;
+      font-size:20px;
+      text-align: center;
+    }
+
+</style>
+
+<h1 id="title"> The Matching Game </h1>
+<p id="rule">Click on the extra smiley face on the left.</p>
+<div id="leftSide"></div>
+<div id="rightSide"></div>
+
+<script >
+
+	$("#title").css("display", "none");
+	$("#rule").css("display", "none");
+	
+
+	$("#title").fadeIn(4000);
+	$("#rule").fadeIn(5000);
+
+
+	var numberOfFaces = 5;
+	var imageFade = 0;
+	var theLeftSide = document.getElementById("leftSide");
+	var theRightSide = document.getElementById("rightSide");
+	var theBody = document.getElementsByTagName("body")[0];
+
+	function generateFaces() {
+		var i;
+
+		for(i = 0; i < numberOfFaces; ++i)
+		{
+			var image = document.createElement("img");
+			image.src = "smile.png";
+			image.style.left = (parseInt((Math.random() * (400 - 0 + 1)), 10) + 0) + "px";
+			image.style.top = (parseInt((Math.random() * (400 - 0 + 1)), 10) + 0) + "px";
+			theLeftSide.appendChild(image);
+		}
+
+
+
+		var leftSideImages = theLeftSide.cloneNode(true);
+		leftSideImages.removeChild(leftSideImages.lastChild);
+		theRightSide.appendChild(leftSideImages);
+
+		// it is important to add the fade in effect after images in both div's are generated
+		if (imageFade == 0)
+		{
+			$("#rightSide").css("display", "none");
+			$("#rightSide").fadeIn(6000);
+			$("#leftSide").css("display", "none");
+			$("#leftSide").fadeIn(6000);
+			imageFade = 1;
+		}
+
+		theLeftSide.lastChild.onclick = function continueGame (event) {
+        event.stopPropagation();
+
+	        while (theLeftSide.firstChild)
+	        {
+	        	theLeftSide.removeChild(theLeftSide.firstChild);
+	        }
+
+	        while (theRightSide.firstChild)
+	        {
+	        	theRightSide.removeChild(theRightSide.firstChild);
+	        }
+
+	        numberOfFaces = numberOfFaces + 5;
+	        generateFaces();
+		}
+	}
+
+	function redirectPage() {
+		window.location = "End.html";
+	}
+		
+	function endGame() {
+	    theBody.onclick = null;
+	    theLeftSide.lastChild.onclick = null;
+	    alert("Game Over!");
+	    $("body").fadeOut(3000, redirectPage);		
+	} 
+
+    window.onload = generateFaces;
+    
+</script>
+
+</body>
+</html>
+
+

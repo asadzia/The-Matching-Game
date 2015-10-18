@@ -1,0 +1,83 @@
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+
+<body>
+<style>
+	
+	body {
+	  background-image: url("sonic.jpg");
+	}
+
+    #myheading {
+	  text-transform: uppercase;
+      color: #33CC33;
+      font-family:  'Hoefler Text', Georgia, 'Times New Roman', serif;
+	  font-weight: normal;
+	  letter-spacing: .2em;
+	  line-height: 1.1em;
+   	  text-align: center; 
+  	  line-height: 200px;
+      margin: auto;
+      margin-top: -100px;
+      position: absolute;
+      top: 20%;
+      width: 80%;
+	  font-size: 100px;	
+	  left: 120px;
+    }
+
+     #tryagain {
+	  text-transform: uppercase;
+      color: #33CC33;
+      font-family:  'Hoefler Text', Georgia, 'Times New Roman', serif;
+	  margin: auto;
+      margin-top: -50px;
+      position: absolute;
+      top: 75%;
+      width: 20%;
+	  left: 520px;
+	  text-align: center;
+    }
+
+    #mytitle {
+      color: #33CC33;
+      font-family:  'Hoefler Text', Georgia, 'Times New Roman', serif;
+	  font-weight: normal;
+      font-size: 1.75em;
+	  letter-spacing: .2em;
+	  line-height: 1.1em;
+      left: 540px;
+  	  line-height: 200px;
+      margin: auto;
+      margin-top: -100px;
+      position: absolute;
+      top: 85%;
+      width: 100%;
+	  font-size: 20px;
+      width: 400px;
+    }
+
+</style>
+
+
+<h1 id="myheading">Thank You for playing!</h1>
+<p><a id="tryagain" href="TheMatchingGame.html">Try Again</a></p>
+<a id="mytitle">Created By: Asad Zia</a>
+
+<script>
+
+	$("#myheading").css("display", "none");
+	$("#mytitle").css("display", "none");	
+	$("#myheading").fadeIn(3000);
+	$("#mytitle").fadeIn(6000);
+
+</script>
+
+</body>
+</html>
+
+
